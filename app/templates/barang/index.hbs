@@ -8,22 +8,26 @@
         <tr style="background-color: white">
             <td>departement</td>
             <td>:</td>
-            <select onchange={{action "selected" value="target.value"}}>
-                {{#each departemens as |item|}}
-                    <option selected hidden>---</option>
-                    <option value="{{item.nama_departemen}}">{{ item.nama_departemen}}</option>
-                {{/each}}
-        </select>  
+            <td>
+                <select onchange={{action "selected" value="target.value"}}>
+                    {{#each departemens as |item|}}
+                        <option selected hidden>---</option>
+                        <option value="{{item.nama_departemen}}">{{ item.nama_departemen}}</option>
+                    {{/each}}
+                </select>  
+            </td>
         </tr>
         <tr>
             <td>kategori</td>
             <td>:</td>
-            <select onchange={{action "selectedkat" value="target.value"}}>
-            {{#each kategoris as |item|}}
-            <option selected hidden>---</option>
-            <option value="{{item.nama_kategori}}">{{ item.nama_kategori}}</option>
-        {{/each}}
-        </select> 
+            <td>
+                <select onchange={{action "selectedkat" value="target.value"}}>
+                    {{#each kategoris as |item|}}
+                        <option selected hidden>---</option>
+                        <option value="{{item.nama_kategori}}">{{ item.nama_kategori}}</option>
+                    {{/each}}
+                </select> 
+            </td>
         </tr>
         <tr style="background-color: white">
             <td colspan="3">
@@ -46,7 +50,7 @@
         <td>{{item.nama_departemen}}/{{item.nama_kategori}}/{{item.kode_barang}} </td>
         <td>{{item.nama_barang}} </td>
         <td>{{item.nama_departemen}} </td>
-        <td>{{format-date item.created}} </td>        
+        <td>{{format-date item.created}} </td>
         <td>
             {{#if item.updated}} 
                 {{format-date item.updated}}

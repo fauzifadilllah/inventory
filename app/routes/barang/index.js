@@ -9,7 +9,7 @@ export default Route.extend({
     // }
     barangService : service(),
     store : service(),
-    model(params){
+    model(){
         //di dalam get = nama service kemudian .method 
         // this.get('barangService').ambilBarang().then(res => res)
         return RSVP.hash({

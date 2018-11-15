@@ -27,6 +27,7 @@ export default Controller.extend({
             this.get('barangService').addBarang(barang)
             this.set('barang', {})
         },
+      
         deleteBarang(barang){
             this.get('barangService').deleteBarang(barang)
         },

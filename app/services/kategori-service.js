@@ -18,6 +18,7 @@ export default Service.extend({
         this.get('store').findAll('kategori', {orderBy : 'kode_kategori'}).then(res =>{
             
             let terbesar = res.get('lastObject')
+            
             let newCode;
             // console.log(terbesar)
  

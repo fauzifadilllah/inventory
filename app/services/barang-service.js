@@ -2,6 +2,24 @@ import Service,{inject as service} from '@ember/service';
 
 export default Service.extend({
     store : service(),
+    pinjam(barang){
+        this.get('store').findRecord('barang', barang.id ).then(function(pin) {
+            pin.set('keterangan', 'pinjam'());
+            pin.save();
+        });
+    },
+    lihatpinjam(){
+        if(id){
+            return this.get('store').findRecord('barang', id)
+        }
+        // this.get('store').query('barang',{filter : {deleted : null}}).then(res => {console.log(res)});
+        // return this.get('store').query('barang', {filter: {nama_barang: 'laptop' }})
+        return this.get('store').query('barang', { 
+            orderBy: 'keterangan',
+            
+            
+        })
+    },
     ambilBarang(id){
         if(id){
             return this.get('store').findRecord('barang', id)
@@ -9,13 +27,15 @@ export default Service.extend({
         // this.get('store').query('barang',{filter : {deleted : null}}).then(res => {console.log(res)});
         // return this.get('store').query('barang', {filter: {nama_barang: 'laptop' }})
         return this.get('store').query('barang', { 
-            orderBy: 'deleted',
-            equalTo: null
+            
+            orderBy: 'keterangan',
+            
+            
         })
     },
     addBarang(barang){
         // console.log(kodedepartemen)
-        let kodedepartemen = this.get('depart.kode_departemen');
+      
         this.get('store').findAll('barang', {orderBy : 'kode_barang'}).then(res =>{
             
             let terbesar = res.get('lastObject')
@@ -34,7 +54,7 @@ export default Service.extend({
                 kode_barang        : newCode,
                 deleted            : null,
                 updated            : null,
-                kode_barang        : newCode,
+               
                
             })
             

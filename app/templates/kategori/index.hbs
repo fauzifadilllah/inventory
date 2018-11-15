@@ -11,7 +11,7 @@
     </tr>
     {{#each model as |item|}}
     <tr>
-        <td>KTR00{{item.kode_kategori}}</td>
+        <td>{{item.kode_kategori}}</td>
         <td>{{item.nama_kategori}}</td>
         <td><button class="btn btn-danger" {{action 'hapusKategori' item.id}}>Delete</button>
        {{#link-to 'kategori.edit' item.id tagName='button' class="btn btn-warning" }}Edit{{/link-to}}</td>
