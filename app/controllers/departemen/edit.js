@@ -7,6 +7,8 @@ export default Controller.extend({
         updateDepartemen(item){
             this.get('departemenService').updateDepartemen(item),
             this.transitionToRoute('departemen.index')
+        },cancel(){
+            this.transitionToRoute('departemen.index');
         }
     }
 });

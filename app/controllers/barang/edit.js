@@ -6,17 +6,25 @@ export default Controller.extend({
     actions : {
           selecteddep: function(selected) {
             console.log(selected)
-            this.set('barang.nama_departemen', selected)
+            this.set('model.nama_departemen', selected)
             
             console.log(this.get('selecteddep'))
         },
         selectedkat: function(selected) {
             console.log(selected)
         
-            this.set('barang.nama_kategori',selected)
+            this.set('model.nama_kategori',selected)
             console.log(this.get('selectedkat'))
         },
+        // updateBarang(){
+        //     this.transitionToRoute('barang.index')
+            
+        // },
+        // cancel(){
+        //     this.transitionToRoute('barang.index');
+        // },
         updateBarang(item){
+            // this.get('karyawanService').updateBarang(item),
             this.get('barangService').updateBarang(item),
             this.transitionToRoute('barang.index')
         },

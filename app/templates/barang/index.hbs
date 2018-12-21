@@ -9,18 +9,18 @@
         <div class="form-group">
             <label>departement :</label>
             <select class="form-control" onchange={{action "selecteddep" value="target.value"}}>
-                {{#each departemens as |item|}}
+                {{#each departemens as |dep|}}
                     <option selected hidden>---</option>
-                    <option value="{{item.nama_departemen}}">{{ item.nama_departemen}}</option>
+                    <option value="{{dep.nama_departemen}}">{{ dep.nama_departemen}}</option>
                 {{/each}}
             </select>  
         </div>
         <div class="form-group">
             <label for=""> kategori</label>
             <select class="form-control" onchange={{action "selectedkat" value="target.value"}}>
-            {{#each kategoris as |item|}}
+            {{#each kategoris as |kat|}}
                 <option selected hidden>---</option>
-                <option value="{{item.nama_kategori}}">{{ item.nama_kategori}}</option>
+                <option value="{{kat.nama_kategori}}">{{ kat.nama_kategori}}</option>
             {{/each}}
             </select> 
         </div>
@@ -45,14 +45,13 @@
                         <td>{{item.nama_departemen}}/{{item.nama_kategori}}/{{item.kode_barang}} </td>
                         <td>{{item.nama_barang}} </td>
                         <td>{{item.nama_departemen}} </td>
-                        <td>{{format-date it
-                            em.created}} </td>        
+                        <td>{{format-date item.created}} </td>        
                         <td>
                             {{#if item.updated}} 
                                 {{format-date item.updated}}
                             {{else}}
                                 -
-                            {{/if}}    
+                            {{/if}}
                         </td>
                         <td>
                             <button class="btn btn-danger" {{action 'deleteBarang' item}} >Delete</button>

@@ -10,11 +10,7 @@ export default DS.Model.extend({
             return new Date();
         }
     }),
-    deleted : DS.attr('string', {
-        defaultValue : function(){
-            return new Date();
-        }
-    }),
+    deleted : DS.attr('string'),
     updated : DS.attr('date',{
         defaultValue : function(){
             return new Date();

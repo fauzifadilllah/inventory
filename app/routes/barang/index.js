@@ -23,6 +23,7 @@ export default Route.extend({
     },
     setupController(controller,model){
         // console.log(model)
+        
         controller.set('barangs', model.barang)
         controller.set('departemens', model.departemen)
         controller.set('kategoris', model.kategori)

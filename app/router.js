@@ -29,7 +29,8 @@ Router.map(function() {
     this.route('formData');
   });
   this.route('peminjaman', function() {
-    this.route('inputPeminjaman', {path : '/inputPeminjaman/:peminjaman_id'});
+    this.route('index');
+    this.route('input-peminjaman',{path : '/index/:barang_id'});
   });
 });
 

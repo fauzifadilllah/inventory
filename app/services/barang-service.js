@@ -2,36 +2,14 @@ import Service,{inject as service} from '@ember/service';
 
 export default Service.extend({
     store : service(),
-    pinjam(barang){
-        this.get('store').findRecord('barang', barang.id ).then(function(pin) {
-            pin.set('keterangan', 'pinjam'());
-            pin.save();
-        });
-    },
-    lihatpinjam(){
-        if(id){
-            return this.get('store').findRecord('barang', id)
-        }
-        // this.get('store').query('barang',{filter : {deleted : null}}).then(res => {console.log(res)});
-        // return this.get('store').query('barang', {filter: {nama_barang: 'laptop' }})
-        return this.get('store').query('barang', { 
-            orderBy: 'keterangan',
-            
-            
-        })
-    },
+
     ambilBarang(id){
         if(id){
             return this.get('store').findRecord('barang', id)
         }
         // this.get('store').query('barang',{filter : {deleted : null}}).then(res => {console.log(res)});
         // return this.get('store').query('barang', {filter: {nama_barang: 'laptop' }})
-        return this.get('store').query('barang', { 
-            
-            orderBy: 'keterangan',
-            
-            
-        })
+        return this.get('store').query('barang', { orderBy: 'deleted', equalTo: null})
     },
     addBarang(barang){
         // console.log(kodedepartemen)
@@ -54,15 +32,12 @@ export default Service.extend({
                 kode_barang        : newCode,
                 deleted            : null,
                 updated            : null,
-               
-               
+                
             })
-            
             return newBarang.save()
         })
-    
     },
-    deleteBarang(barang){
+    deleteBarang(barang, id){
         this.get('store').findRecord('barang', barang.id ).then(function(del) {
             del.set('deleted', new Date());
             del.save();
@@ -70,7 +45,7 @@ export default Service.extend({
     },
     
     updateBarang(id){
-        this.get('store').findRecord('barang' , id ).then(function(edit) {
+        this.get('store').findRecord('barang' , id).then(function(edit) {
             edit.set('updated', new Date());
             edit.save();
         })
